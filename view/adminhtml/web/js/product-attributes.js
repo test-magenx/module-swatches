@@ -332,12 +332,12 @@ define([
                 },
 
                 /**
-                 * @param {jQuery} el
+                 * @param {Object} el
                  * @this {swatchProductAttributes}
                  */
                 _enable: function (el) {
                     if (!el.attr('readonly')) {
-                        el.prop('disabled', false);
+                        el.removeAttr('disabled');
                     }
                 },
 

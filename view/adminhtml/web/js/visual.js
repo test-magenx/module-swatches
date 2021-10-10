@@ -318,12 +318,12 @@ define([
                         display: 'none'
                     }).appendTo($('body'));
 
-                    this.iframe = $('<iframe></iframe>', {
+                    this.iframe = $('<iframe />', {
                         id:  'upload_iframe',
                         name: 'upload_iframe'
                     }).appendTo(this.wrapper);
 
-                    this.form = $('<form></form>', {
+                    this.form = $('<form />', {
                         id: 'swatch_form_image_upload',
                         name: 'swatch_form_image_upload',
                         target: 'upload_iframe',
@@ -384,7 +384,7 @@ define([
              */
             $(document).on('click', '.btn_choose_file_upload', function () {
                 swatchComponents.inputFile.attr('data-called-by', $(this).attr('id'));
-                swatchComponents.inputFile.trigger('click');
+                swatchComponents.inputFile.click();
             });
 
             /**

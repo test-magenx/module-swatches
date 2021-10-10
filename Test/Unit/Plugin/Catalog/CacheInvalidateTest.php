@@ -37,9 +37,6 @@ class CacheInvalidateTest extends TestCase
      */
     private $cacheInvalidate;
 
-    /**
-     * @inheritdoc
-     */
     protected function setUp(): void
     {
         $this->typeList = $this->getMockForAbstractClass(TypeListInterface::class);
@@ -56,23 +53,16 @@ class CacheInvalidateTest extends TestCase
         );
     }
 
-    /**
-     * @return void
-     */
-    public function testAfterSaveSwatch(): void
+    public function testAfterSaveSwatch()
     {
         $this->swatchHelper->expects($this->atLeastOnce())->method('isSwatchAttribute')->with($this->attribute)
             ->willReturn(true);
-        $this->typeList
-            ->method('invalidate')
-            ->withConsecutive(['block_html'], ['collections']);
+        $this->typeList->expects($this->at(0))->method('invalidate')->with('block_html');
+        $this->typeList->expects($this->at(1))->method('invalidate')->with('collections');
         $this->assertSame($this->attribute, $this->cacheInvalidate->afterSave($this->attribute, $this->attribute));
     }
 
-    /**
-     * @return void
-     */
-    public function testAfterSaveNotSwatch(): void
+    public function testAfterSaveNotSwatch()
     {
         $this->swatchHelper->expects($this->atLeastOnce())->method('isSwatchAttribute')->with($this->attribute)
             ->willReturn(false);
