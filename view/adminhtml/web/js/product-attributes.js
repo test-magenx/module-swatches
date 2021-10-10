@@ -431,10 +431,10 @@ define([
                 tableBody = $(),
                 activePanel = $();
 
-            $('#frontend_input').on('change', function () {
+            $('#frontend_input').bind('change', function () {
                 swatchProductAttributes.bindAttributeInputType();
             });
-            $('#is_filterable').on('change', function () {
+            $('#is_filterable').bind('change', function () {
                 swatchProductAttributes.switchIsFilterable();
             });
 
